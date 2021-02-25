@@ -1,0 +1,32 @@
+SELECT * FROM user;
+SELECT * FROM song;
+SELECT * FROM task;CREATE TABLE `song` (
+  `IdSong` int NOT NULL AUTO_INCREMENT,
+  `Name` varchar(45) NOT NULL,
+  `IdUserListener` int DEFAULT NULL,
+  PRIMARY KEY (`IdSong`),
+  UNIQUE KEY `IdSong_UNIQUE` (`IdSong`),
+  KEY `IdUserListener_Song_idx` (`IdUserListener`),
+  CONSTRAINT `IdUserListener_Song` FOREIGN KEY (`IdUserListener`) REFERENCES `user` (`IdUser`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `task` (
+  `IdTask` int NOT NULL AUTO_INCREMENT,
+  `IdUser` int NOT NULL,
+  `Location` varchar(45) NOT NULL,
+  `StartTime` varchar(45) NOT NULL,
+  `EndTime` varchar(45) NOT NULL,
+  PRIMARY KEY (`IdTask`),
+  KEY `IdUser_Task_idx` (`IdUser`),
+  CONSTRAINT `IdUser_Task` FOREIGN KEY (`IdUser`) REFERENCES `user` (`IdUser`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `user` (
+  `IdUser` int NOT NULL AUTO_INCREMENT,
+  `Name` varchar(45) NOT NULL,
+  `Privilege` enum('USER','ADMIN') NOT NULL,
+  `Password` varchar(45) NOT NULL,
+  PRIMARY KEY (`IdUser`),
+  UNIQUE KEY `IdUser_UNIQUE` (`IdUser`),
+  UNIQUE KEY `Name_UNIQUE` (`Name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

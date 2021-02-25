@@ -1,0 +1,2 @@
+x-rapidapi-key: 4c9b48580dmsh1474e734b15ec04p1bf687jsn1b7cacdeea16
+x-rapidapi-host: deezerdevs-deezer.p.rapidapi.com

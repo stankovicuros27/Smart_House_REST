@@ -1,0 +1,2 @@
+Configure glassfish server
+Configure API files (set them inside glassfish folder)
